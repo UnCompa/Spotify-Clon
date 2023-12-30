@@ -322,8 +322,8 @@ export const Player = () => {
   };
 
   return (
-    <section className="flex justify-between items-center text-white font-bold text-xs px-8">
-      <div className="w-80">
+    <section className="flex flex-col lg:flex-row justify-between items-center text-white font-bold text-xs px-8">
+      <div className="w-80 lg:flex lg:items-center lg:justify-center">
         <CurrentSong {...currentMusic.song} />
       </div>
       <div className="grid place-content-center gap-4">

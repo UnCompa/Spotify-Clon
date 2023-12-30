@@ -38,7 +38,7 @@ async function readSongs() {
             }
 
             // Obtener el título o el nombre del archivo
-            const title = metadata.common.title || file.replace('.mp3', '') || '';
+            const title = file.replace('.mp3', '') || metadata.common.title || '';
 
             songs.push({
               id: albumSongId++,
