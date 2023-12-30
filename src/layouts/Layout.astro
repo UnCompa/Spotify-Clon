@@ -1,0 +1,65 @@
+---
+import AsideMenu from '../components/AsideMenu.astro';
+import {ViewTransitions} from 'astro:transitions'
+import Player from './../components/Player'
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions/>
+	</head>
+	<body>
+		<div id="app" class="h-screen grid">
+			<aside class="[grid-area:aside] overflow-y-auto">
+				<AsideMenu/>
+			</aside>
+			<main class="[grid-area:main] rounded-lg bg-zinc-900 overflow-y-auto w-full">
+				<slot/>
+			</main>
+			<footer class="[grid-area:player] h-[80px] bg-zinc-900">
+				<Player client:load transition:name='music-player' transition:persist/>
+			</footer>
+		</div>
+	</body>
+</html>
+<style is:global>
+	html {
+		background-color: #101010;
+		font-family: system-ui, sans-serif;
+	}
+	#app {
+		grid-template-areas:
+          "aside main main"
+          "player player player";
+		grid-template-columns: 350px 1fr;
+		grid-template-rows: 1fr auto;
+	}
+	aside::-webkit-scrollbar {
+		width: 5px;
+		background: #323232;
+	}
+	aside::-webkit-scrollbar-thumb {
+		width: 5px;
+		background: #434343;
+	}
+	#table-music::-webkit-scrollbar {
+		width: 5px;
+		background: #434343;
+	}
+	#table-music::-webkit-scrollbar-thumb {
+		width: 5px;
+		background: #0a5;
+	}
+</style>

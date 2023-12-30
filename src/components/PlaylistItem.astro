@@ -1,0 +1,22 @@
+---
+import type {Playlist} from './../data/data'
+interface Props {
+    playlist: Playlist
+}
+const {playlist} = Astro.props
+const {id, cover, artists, title, color} = playlist
+---
+
+<a href={`/Spotify-Clon/playlist/${id}`} class="flex py-2 gap-4 relative rounded overflow-y-auto hover:bg-zinc-800 transition-all duration-200">
+    <picture class="h-12 w-12 flex-none">
+        <img src={cover} alt="" class="w-full h-full object-cover rounded">
+    </picture>
+    <div>
+        <h4 class="text-zinc-200 text-sm">
+            {title}
+        </h4>
+        <span class="text-xs">
+            {artists}
+        </span>
+    </div>
+</a>

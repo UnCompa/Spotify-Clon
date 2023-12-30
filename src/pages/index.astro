@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PlayListCard from "./../components/PlayListCard.astro";
+import { playlists } from "../data/data";
+import Greeting from "./../components/Greeting.svelte";
+---
+
+<Layout title="Spotify Clon | UnCompa">
+  <div
+    id="plalist-container"
+    class="relative transition-all duration-500 bg-sky-500 rounded-xl"
+  >
+    <div class="relative z-10 p-4">
+      <Greeting />
+      <div class="flex flex-wrap mt-4 gap-4">
+        {playlists.map((playlist) => <PlayListCard playlist={playlist} />)}
+      </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"
+      >
+      </div>
+    </div>
+  </div>
+</Layout>
