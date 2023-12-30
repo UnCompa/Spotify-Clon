@@ -249,12 +249,12 @@ export const Player = () => {
         if (song.title) {
           const Title = song.title;
           setTitle(Title);
-          src = `/Spotify-Clon/music/${playlist?.id}/${Title}.mp3`;
+          src = `/music/${playlist?.id}/${Title}.mp3`;
         } else if (song.id) {
           const Id = song.id;
           setId(Id);
           console.log(Id);
-          src = `/Spotify-Clon/music/${playlist?.id}/${"0" + Id}.mp3`;
+          src = `/music/${playlist?.id}/${"0" + Id}.mp3`;
         }
         // Evitar recargar la misma canción
         if (audioRef.current.src !== src) {

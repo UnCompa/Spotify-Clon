@@ -7,7 +7,6 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  base: '/Spotify-Clon/',
   integrations: [tailwind(), svelte(), react()],
   output: 'server',
   adapter: vercel()
