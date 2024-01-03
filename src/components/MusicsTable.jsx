@@ -10,12 +10,12 @@ const MusicsTable = ({ songs }) => {
   };
 
   return (
-    <div className="grid grid-cols-spotify gap-y-2 text-left text-white h-full">
+    <div className="grid grid-cols-spotify gap-y-2 text-left text-white h-full w-full">
       <div className="col-span-1 px-4 py-2 font-light w-4">#</div>
-      <div className="col-span-1 px-4 py-2 font-light w-1/1">Canciones</div>
-      <div className="col-span-1 px-4 py-2 font-light w-3/12">Album</div>
-      <div className="col-span-1 px-4 py-2 font-light w-1/12">Duracion</div>
-      <div className="col-span-1 px-4 py-2 font-light w-1/12">Acciones</div>
+      <div className="col-span-1 px-4 py-2 font-light w-10 lg:w-1/1">Canciones</div>
+      <div className="col-span-1 px-4 py-2 font-light w-full">Album</div>
+      <div className="col-span-1 px-4 py-2 font-light w-full">Duracion</div>
+      <div className="col-span-1 px-4 py-2 font-light w-full">Acciones</div>
       {songs.map((song, index) => (
         <React.Fragment key={index}>
           <div className="text-gray-300 text-sm font-light transition duration-300">
@@ -24,7 +24,7 @@ const MusicsTable = ({ songs }) => {
             </div>
           </div>
           <div className=" text-gray-300 text-sm font-light transition duration-300">
-            <div className="p-2 flex w-full">
+            <div className="p-2 flex w-32 lg:w-full">
               <picture className="flex-none aspect-square h-12 w-12">
                 <img src={song.image} alt={song.title} className="w-11 h-11" />
               </picture>

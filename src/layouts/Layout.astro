@@ -30,7 +30,7 @@ const { title } = Astro.props;
       >
         <slot />
       </main>
-      <footer class="[grid-area:player] h-[80px] bg-zinc-900">
+      <footer class="[grid-area:player] h-[100px] bg-zinc-900">
         <Player client:load transition:name="music-player" transition:persist />
       </footer>
     </div>
@@ -49,11 +49,11 @@ const { title } = Astro.props;
       @media (max-width: 880px) {
         #app {
           grid-template-areas:
-		  	"main"
+		  	    "main"
             "aside"
             "player";
           grid-template-columns: 100%;
-          grid-template-rows: 3fr 1fr auto;
+          grid-template-rows: 100vh 50vh auto;
         }
       }
       aside::-webkit-scrollbar {

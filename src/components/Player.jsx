@@ -117,7 +117,7 @@ const SongControl = ({ audio }) => {
         value={[currentTime]}
         max={audio?.current?.duration ?? 0}
         min={0}
-        className="w-[400px]"
+        className="w-[200px] lg:w-[400px]"
         onValueChange={(value) => {
           if (audio?.current) {
             const [newCurrentTime] = value;
@@ -322,7 +322,7 @@ export const Player = () => {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row justify-between items-center text-white font-bold text-xs px-8">
+    <section className="flex flex-col lg:flex-row justify-between items-center text-white font-bold text-xs py-4 lg:px-8 h-full">
       <div className="w-80 lg:flex lg:items-center lg:justify-center">
         <CurrentSong {...currentMusic.song} />
       </div>
