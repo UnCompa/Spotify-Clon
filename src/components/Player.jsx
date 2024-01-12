@@ -362,7 +362,7 @@ export const Player = () => {
             </button>
           </div>
           <SongControl audio={audioRef} />
-          <audio ref={audioRef} onEnded={playNextSong} audio={audioRef} />
+          <audio preload="auto" ref={audioRef} onEnded={playNextSong} audio={audioRef} />
         </div>
       </div>
       <div>

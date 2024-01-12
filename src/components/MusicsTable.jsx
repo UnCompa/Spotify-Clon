@@ -1,13 +1,16 @@
 import { usePlayerStore } from "../store/playerStore";
-import React from "react";
+import React, { useCallback } from "react";
 import { Pause, Play } from "./Player";
 
 const MusicsTable = ({ songs }) => {
   const { playSong, isPlaying, currentMusic } = usePlayerStore();
 
-  const handlePlayClick = (song, songs) => {
-    playSong(song, songs);
-  };
+  const handlePlayClick = useCallback((song, songs) => {
+    playSong(song, songs)
+  },[playSong])
+  // const handlePlayClick = (song, songs) => {
+  //   playSong(song, songs);
+  // };
 
   return (
     <div className="grid grid-cols-spotify gap-y-2 text-left text-white h-full w-full">
@@ -26,7 +29,7 @@ const MusicsTable = ({ songs }) => {
           <div className=" text-gray-300 text-sm font-light transition duration-300">
             <div className="p-2 flex w-32 lg:w-full">
               <picture className="flex-none aspect-square h-12 w-12">
-                <img src={song.image} alt={song.title} className="w-11 h-11" />
+                <img src={song.image} alt={song.title} loading="lazy" className="w-11 h-11" />
               </picture>
               <div className="flex flex-col w-full px-2">
                 <h3 className="text-white text-sm font-normal truncate pr-8">
