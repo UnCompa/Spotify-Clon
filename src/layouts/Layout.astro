@@ -15,7 +15,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="https://w7.pngwing.com/pngs/476/841/png-transparent-computer-icons-spotify-podcast-spotify-app-icon-blue-angle-text.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
@@ -35,9 +35,14 @@ const { title } = Astro.props;
       </footer>
     </div>
     <style is:global>
+      @font-face {
+        font-family: 'MetroPolis';
+        src: url('./../font/GothamLight.ttf');
+        font-weight: 100;
+      }
       html {
         background-color: #101010;
-        font-family: system-ui, sans-serif;
+        font-family: 'MetroPolis', system-ui, sans-serif;
       }
       #app {
         grid-template-areas:

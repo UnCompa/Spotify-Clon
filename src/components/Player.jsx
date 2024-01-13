@@ -201,8 +201,7 @@ const CurrentSong = ({ image, title, artists }) => {
 };
 
 export const Player = () => {
-  const { currentMusic, isPlaying, setIsPlaying, volume, playSong } =
-    usePlayerStore();
+  const { currentMusic, isPlaying, setIsPlaying, volume, playSong } = usePlayerStore();
   const audioRef = useRef();
   const [Id, setId] = useState(null);
   const [Title, setTitle] = useState(null);

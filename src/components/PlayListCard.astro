@@ -27,6 +27,7 @@ const {id, cover, artists, title, color} = playlist
         src={cover}
         alt={`Cover of ${title} by ${artists}`}
         class="object-cover w-full h-full rounded-md"
+        loading="lazy"
         transition:name=`playlist ${id} image`
       />
     </picture>

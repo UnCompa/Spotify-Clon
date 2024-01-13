@@ -27,7 +27,7 @@ import PlaylistItem from "./PlaylistItem.astro";
         <div class="">
             <ul class="flex flex-wrap gap-2">
                 {
-                    playlists.map(playlist => <PlaylistItem playlist={playlist}/>)
+                    playlists.map(playlist => <PlaylistItem playlist={playlist} client:visible />)
                 }
             </ul>
         </div>

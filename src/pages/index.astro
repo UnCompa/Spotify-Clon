@@ -13,7 +13,7 @@ import Greeting from "./../components/Greeting.svelte";
     <div class="relative z-10 p-4">
       <Greeting />
       <div class="flex flex-wrap mt-4 gap-4">
-        {playlists.map((playlist) => <PlayListCard playlist={playlist} />)}
+        {playlists.map((playlist) => <PlayListCard playlist={playlist} client:load />)}
       </div>
       <div
         class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-[1]"
