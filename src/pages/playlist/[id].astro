@@ -32,7 +32,7 @@ const hours = totalDurationInHours.toFixed(0)
       <div class="flex flex-col justify-between">
         <h2 class="flex flex-1 items-end text-zinc-200">Playlist</h2>
         <div>
-          <h1 class="text-4xl lg:text-5xl font-bold block text-white">
+          <h1 class="text-4xl lg:text-5xl font-bold block text-white" transition:name=`playlist ${id} title`>
             {playlist?.title}
             <span transition:name=`playlist ${playlist?.id} title`></span>
           </h1>
@@ -40,7 +40,7 @@ const hours = totalDurationInHours.toFixed(0)
         <div class="flex-1 flex items-end">
           <div class="text-sm text-gray-300 font-normal">
             <div transition:name=`playlist ${playlist?.id} artists`>
-              <span>{playlist?.artists.join(", ")}</span>
+              <span transition:name=`playlist ${id} artists`>{playlist?.artists.join(", ")}</span>
             </div>
             <p class="mt-1">
               <span class="text-white">{playListSongs.length} canciones</span>,
