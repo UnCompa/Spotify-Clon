@@ -38,7 +38,7 @@ const MusicsTable = ({ songs }) => {
                   src={song.image}
                   alt={song.title}
                   loading="lazy"
-                  className="w-11 h-11"
+                  className="w-10 h-10 object-cover"
                 />
               </picture>
               <div className="flex flex-col w-full px-2">
