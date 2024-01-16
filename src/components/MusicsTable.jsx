@@ -17,22 +17,22 @@ const MusicsTable = ({ songs }) => {
 
   return (
     <div className="grid grid-cols-spotify gap-y-2 text-left text-white h-full w-full">
-      <div className="col-span-1 px-4 py-2 font-light w-1 lg:w-full">#</div>
-      <div className="col-span-1 px-4 py-2 font-light w-full lg:w-1/1">
+      <div className="col-span-1 px-4 py-2 font-light w-1">#</div>
+      <div className="col-span-1 px-4 py-2 font-light w-full">
         Canciones
       </div>
-      <div className="col-span-1 px-4 py-2 font-light w-16 lg:w-full">Album</div>
-      <div className="col-span-1 px-4 py-2 font-light w-24 lg:w-full">Duracion</div>
-      <div className="col-span-1 px-4 py-2 font-light w-24 lg:w-full">Acciones</div>
+      <div className="col-span-1 px-4 py-2 font-light w-16 hidden lg:block">Album</div>
+      <div className="col-span-1 px-4 py-2 font-light w-24">Duracion</div>
+      <div className="col-span-1 px-4 py-2 font-light w-24">Acciones</div>
       {songs.map((song, index) => (
         <React.Fragment key={index}>
-          <div className="text-gray-300 text-sm font-light transition duration-300">
+          <div className="col-start-1 text-gray-300 text-sm font-light transition duration-300">
             <div className="p-2">
               <div className="text-white font-normal">{index + 1}</div>
             </div>
           </div>
-          <div className=" text-gray-300 text-sm font-light transition duration-300">
-            <div className="p-2 flex w-32 sm:w-36 lg:w-full">
+          <div className="col-start-2 text-gray-300 text-sm font-light transition duration-300">
+            <div className="p-2 flex w-32 lg:w-52">
               <picture className="flex-none aspect-square h-12 w-12">
                 <img
                   src={song.image}
@@ -45,19 +45,19 @@ const MusicsTable = ({ songs }) => {
                 <h3 className="text-white text-sm font-normal truncate pr-8">
                   {song.title}
                 </h3>
-                <span>{song.artists.join(", ")}</span>
+                <span className="truncate">{song.artists.join(", ")}</span>
               </div>
             </div>
           </div>
-          <div className="flex items-center px-4 text-gray-300 text-sm font-light transition duration-300">
-            <div className="text-white">{song.album}</div>
+          <div className="hidden lg:flex items-center px-4 text-gray-300 text-sm font-light transition duration-300">
+            <div className="text-white hidden lg:block">{song.album}</div>
           </div>
-          <div className=" text-gray-300 text-sm font-light transition duration-300">
+          <div className="col-start-3 lg:col-start-4 text-gray-300 text-sm font-light transition duration-300">
             <div className="p-2">
               <div className="ml-4">{song.duration}</div>
             </div>
           </div>
-          <div className="text-gray-300 text-sm font-light transition duration-300">
+          <div className="col-start-4 lg:col-start-5 text-gray-300 text-sm font-light transition duration-300">
             <div className="p-2 flex items-center justify-center w-16">
               <button
                 className={`text-black rounded-full h-8 w-8 ml-4 grid place-content-center transition-colors duration-200 hover:bg-green-500 hover:shadow-lg ${

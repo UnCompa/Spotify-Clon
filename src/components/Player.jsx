@@ -1,30 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { usePlayerStore } from "../store/playerStore";
 import { Slider } from "./Slider.tsx";
-
-// export const Forward = ({ className }) => {
-//   <svg
-//     className={className}
-//     data-encore-id="icon"
-//     role="img"
-//     aria-hidden="true"
-//     viewBox="0 0 16 16"
-//     class="Svg-sc-ytk21e-0 kPpCsU"
-//   >
-//     <path d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"></path>
-//   </svg>;
-// };
-// export const Backward = ({ className }) => {
-//   <svg
-//     className={className}
-//     data-encore-id="icon"
-//     role="img"
-//     aria-hidden="true"
-//     viewBox="0 0 16 16"
-//   >
-//     <path d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z"></path>
-//   </svg>;
-// };
 export const Pause = ({ className }) => (
   <svg
     className={className}
@@ -153,7 +129,7 @@ const VolumeControl = () => {
   };
 
   return (
-    <div className="flex justify-center gap-x-2 text-white">
+    <div className="flex justify-center gap-x-2 text-white my-4 lg:my-0">
       <button
         className="opacity-70 hover:opacity-100 transition"
         onClick={handleClickVolumen}
@@ -186,14 +162,15 @@ const CurrentSong = ({ image, title, artists }) => {
       className={`
         flex items-center gap-5 relative
         overflow-hidden
+        my-4
       `}
     >
       <picture className="w-16 h-16 bg-zinc-800 rounded-md shadow-lg overflow-hidden">
         <img src={image} alt={title} className="object-cover w-full h-full" />
       </picture>
 
-      <div className="flex flex-col w-32">
-        <h3 className="font-semibold text-sm truncate">{title}</h3>
+      <div className="flex flex-col w-52">
+        <h3 className="font-semibold text-sm truncate w-full">{title}</h3>
         <span className="text-xs opacity-80">{artists?.join(", ")}</span>
       </div>
     </div>
@@ -256,11 +233,15 @@ export const Player = () => {
           src = `/music/${playlist?.id}/${"0" + Id}.mp3`;
         }
         // Evitar recargar la misma canción
-        if (audioRef.current.src !== src) {
-          audioRef.current.src = src;
-          audioRef.current.volume = volume;
-          audioRef.current.load();
-          audioRef.current.play();
+        try {
+          if (audioRef.current.src !== src) {
+            audioRef.current.src = src;
+            audioRef.current.volume = volume;
+            audioRef.current.load();
+            audioRef.current.play();
+          }
+        } catch(e) {
+          console.log(e);
         }
       }
     };
@@ -341,7 +322,7 @@ export const Player = () => {
                 <path d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z"></path>
               </svg>
             </button>
-            <button className="bg-white rounded-full p-2" onClick={handleClick}>
+            <button className="bg-white rounded-full p-2 hover:bg-green-500 transition-colors" onClick={handleClick}>
               {isPlaying ? <Pause /> : <Play />}
             </button>
 
@@ -354,7 +335,6 @@ export const Player = () => {
                 role="img"
                 aria-hidden="true"
                 viewBox="0 0 16 16"
-                class="Svg-sc-ytk21e-0 kPpCsU"
               >
                 <path d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"></path>
               </svg>

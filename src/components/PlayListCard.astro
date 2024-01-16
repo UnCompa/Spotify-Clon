@@ -15,7 +15,7 @@ const {id, cover, artists, title} = playlist
     z-10
   `
   >
-    <CardPlayButton id={id} client:visible />
+    <CardPlayButton id={id} client:load />
   </div>
     <a
     href={`/playlist/${id}`}

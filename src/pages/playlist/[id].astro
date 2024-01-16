@@ -18,7 +18,7 @@ const totalDurationInHours = totalDurationInSeconds / 3600;
 const hours = totalDurationInHours.toFixed(0)
 ---
 
-<Layout title={playlist?.title ?? ""}>
+<Layout title={playlist?.title ?? ""} icon={playlist?.cover ?? ''}>
   <div
     id="playlist-container"
     class=`relative flex flex-col h-full bg-zinc-500 overflow-x-hidden`
@@ -34,13 +34,12 @@ const hours = totalDurationInHours.toFixed(0)
         <div>
           <h1 class="text-4xl lg:text-5xl font-bold block text-white" transition:name=`playlist ${id} title`>
             {playlist?.title}
-            <span transition:name=`playlist ${playlist?.id} title`></span>
           </h1>
         </div>
         <div class="flex-1 flex items-end">
           <div class="text-sm text-gray-300 font-normal">
             <div transition:name=`playlist ${playlist?.id} artists`>
-              <span transition:name=`playlist ${id} artists`>{playlist?.artists.join(", ")}</span>
+              <span>{playlist?.artists.join(", ")}</span>
             </div>
             <p class="mt-1">
               <span class="text-white">{playListSongs.length} canciones</span>,
