@@ -2,6 +2,7 @@
 import AsideMenu from "../components/AsideMenu.astro";
 import { ViewTransitions } from "astro:transitions";
 import Player from "./../components/Player";
+import AsideMenuResponsive from "../components/AsideMenuResponsive.astro";
 interface Props {
   title: string;
   icon: string;
@@ -16,7 +17,7 @@ const { title, icon } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href={icon ?? `https://w7.pngwing.com/pngs/476/841/png-transparent-computer-icons-spotify-podcast-spotify-app-icon-blue-angle-text.png`} />
+    <link rel="icon" type="image/png" href={icon ?? `/icon.png`} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
@@ -31,6 +32,9 @@ const { title, icon } = Astro.props;
       >
         <slot />
       </main>
+      <aside class="[grid-area:menu]">
+        <AsideMenuResponsive/>
+      </aside>
       <footer class="[grid-area:player] h-[100px] bg-zinc-900">
         <Player client:load transition:name="music-player" transition:persist />
       </footer>
@@ -48,18 +52,19 @@ const { title, icon } = Astro.props;
       #app {
         grid-template-areas:
           "aside main main"
+          "menu menu menu"
           "player player player";
         grid-template-columns: 350px 1fr;
-        grid-template-rows: 1fr auto;
+        grid-template-rows: 1fr 0px auto;
       }
       @media (max-width: 880px) {
         #app {
           grid-template-areas:
 		  	    "main"
-            "aside"
+            "menu"
             "player";
           grid-template-columns: 100%;
-          grid-template-rows: 100vh 50vh auto;
+          grid-template-rows: 65dvh auto auto;
         }
       }
       html::-webkit-scrollbar {

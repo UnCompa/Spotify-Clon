@@ -1,0 +1,19 @@
+---
+import Home from "../icons/Home.astro";
+import Search from "../icons/Search.astro";
+import SideNavMenu from "./SideNavItem.astro";
+
+---
+
+<nav class="w-full h-12">
+    <div class="flex bg-zinc-900 transition-colors duration-200 rounded">
+        <ul class="flex px-4 gap-x-4 items-center justify-center">
+            <SideNavMenu href="/">
+                <Home/> Inicio
+            </SideNavMenu>
+            <SideNavMenu href="/#">
+                <Search/> Buscar
+            </SideNavMenu>
+        </ul>
+    </div>
+</nav>

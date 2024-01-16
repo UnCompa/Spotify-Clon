@@ -32,7 +32,7 @@ const MusicsTable = ({ songs }) => {
             </div>
           </div>
           <div className="col-start-2 text-gray-300 text-sm font-light transition duration-300">
-            <div className="p-2 flex w-32 lg:w-52">
+            <div className="p-2 flex w-40 lg:w-52">
               <picture className="flex-none aspect-square h-12 w-12">
                 <img
                   src={song.image}

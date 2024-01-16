@@ -3,9 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import PlayListCard from "./../components/PlayListCard.astro";
 import { playlists } from "../data/data";
 import Greeting from "./../components/Greeting.svelte";
+
+const valor = false;
 ---
 
-<Layout title="Spotify Clon | UnCompa">
+<Layout title="Spotify Clon | UnCompa" icon="/icon.png">
   <div
     id="plalist-container"
     class="relative transition-all duration-500 bg-green-500 rounded-xl"
