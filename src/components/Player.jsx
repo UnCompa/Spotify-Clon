@@ -182,6 +182,7 @@ export const Player = () => {
   const audioRef = useRef();
   const [Id, setId] = useState(null);
   const [Title, setTitle] = useState(null);
+  const [loading, setLoading] = useState()
 
   const playNextSong = ({ audio }) => {
     // Obtén la lista de canciones y la canción actual
@@ -201,12 +202,13 @@ export const Player = () => {
 
     // Obtiene la siguiente canción
     const nextSong = songs[nextSongIndex];
-
+    setLoading(true);
     // Reproduce la siguiente canción solo si el estado actual de audio lo permite
     if (audioRef.current.readyState >= 2) {
       audioRef.current.pause();
       usePlayerStore.getState().playSong(nextSong, songs);
     }
+    setLoading(false);
   };
   useEffect(() => {
     isPlaying ? audioRef.current.play() : audioRef.current.pause();
@@ -254,7 +256,7 @@ export const Player = () => {
 
   const handleChangeSong = () => {
     const { songs } = currentMusic;
-    const currentSong = currentMusic.song;
+    const currentSong = currentMusic.song ?? '';
 
     if (!songs || !currentSong) {
       console.error("La propiedad songs o song es undefined.");
@@ -277,34 +279,38 @@ export const Player = () => {
     }
   };
   const handlePreviewSong = () => {
-    const { songs } = currentMusic;
-    const currentSong = currentMusic.song;
+    const { songs, song } = currentMusic;
 
-    if (!songs || !currentSong) {
-      console.error("La propiedad songs o song es undefined.");
-      return;
-    }
+  if (!songs || !song) {
+    console.error("La propiedad songs o song es undefined.");
+    return;
+  }
 
-    // Calcula el índice de la siguiente canción
-    const currentSongIndex = songs.findIndex(
-      (song) => song.id === currentSong.id
-    );
-    const nextSongIndex = (currentSongIndex - 1) % songs.length;
+  // Calcula el índice de la siguiente canción
+  const currentSongIndex = songs.findIndex((s) => s.id === song.id);
+  const nextSongIndex = (currentSongIndex + 1) % songs.length;
 
-    // Obtiene la siguiente canción
-    const nextSong = songs[nextSongIndex];
+  // Obtiene la siguiente canción
+  const nextSong = songs[nextSongIndex];
 
-    // Reproduce la siguiente canción solo si el estado actual de audio lo permite
-    if (audioRef.current.readyState >= 2) {
+  // Reproduce la siguiente canción solo si el estado actual de audio lo permite
+  if (audioRef.current) {
+    try {
       audioRef.current.pause();
       usePlayerStore.getState().playSong(nextSong, songs);
+    } catch (error) {
+      console.error("Error al cambiar la canción:", error);
     }
+  }
   };
-
   return (
     <section className="flex flex-col lg:flex-row justify-between items-center text-white font-bold text-xs py-4 lg:px-8 h-full">
       <div className="w-80 lg:flex lg:items-center lg:justify-center">
-        <CurrentSong {...currentMusic.song} />
+      {loading ? (
+          <p>Cargando...</p>
+        ) : (
+          <CurrentSong {...currentMusic.song} />
+        )}
       </div>
       <div className="grid place-content-center gap-4">
         <div className="flex justify-center flex-col items-center">
