@@ -4,16 +4,16 @@ import { Pause, Play } from "./Player";
 
 const MusicsTable = ({ songs }) => {
   const { playSong, isPlaying, currentMusic } = usePlayerStore();
-
+  console.log(currentMusic.song);
+  console.log(playSong);
+  console.log(isPlaying);
+  
   const handlePlayClick = useCallback(
     (song, songs) => {
       playSong(song, songs);
     },
     [playSong]
   );
-  // const handlePlayClick = (song, songs) => {
-  //   playSong(song, songs);
-  // };
 
   return (
     <div className="grid grid-cols-spotify gap-y-2 text-left text-white h-full w-full">

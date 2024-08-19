@@ -8,7 +8,11 @@ export const usePlayerStore = create((set) => ({
   setIsPlaying: (isPlaying) => set({ isPlaying }),
   setCurrentMusic: (currentMusic) => set({ currentMusic }),
   playSong: (song, songs) => {
+    console.log(song, songs);
+    
     set((state) => {
+      console.log(state.currentMusic.song);
+      console.log(song);
       if (state.currentMusic.song === song && state.isPlaying) {
         // Si la canción que se está reproduciendo es la misma que la nueva canción y ya está reproduciéndose,
         // pausar la reproducción.
