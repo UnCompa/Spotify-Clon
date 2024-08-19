@@ -10,7 +10,8 @@
     "astro": "astro",
     "metadata": "node src/scripts/getMetaData.js",
     "playlist": "node src/scripts/getPlaylist.js",
-    "songs": "node src/scripts/getSongs.js"
+    "songs": "node src/scripts/getSongs.js",
+    "songs-up": "node src/scripts/GetSongs2.js"
   },
   "dependencies": {
     "@astrojs/react": "^3.0.9",

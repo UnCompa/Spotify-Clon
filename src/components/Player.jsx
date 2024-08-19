@@ -178,11 +178,12 @@ const CurrentSong = ({ image, title, artists }) => {
 };
 
 export const Player = () => {
-  const { currentMusic, isPlaying, setIsPlaying, volume, playSong } = usePlayerStore();
+  const { currentMusic, isPlaying, setIsPlaying, volume, playSong } =
+    usePlayerStore();
   const audioRef = useRef();
   const [Id, setId] = useState(null);
   const [Title, setTitle] = useState(null);
-  const [loading, setLoading] = useState()
+  const [loading, setLoading] = useState();
 
   const playNextSong = ({ audio }) => {
     // Obtén la lista de canciones y la canción actual
@@ -240,9 +241,9 @@ export const Player = () => {
             audioRef.current.src = src;
             audioRef.current.volume = volume;
             audioRef.current.load();
-            audioRef.current.play();
+            audioRef.current.play()
           }
-        } catch(e) {
+        } catch (e) {
           console.log(e);
         }
       }
@@ -256,7 +257,7 @@ export const Player = () => {
 
   const handleChangeSong = () => {
     const { songs } = currentMusic;
-    const currentSong = currentMusic.song ?? '';
+    const currentSong = currentMusic.song ?? "";
 
     if (!songs || !currentSong) {
       console.error("La propiedad songs o song es undefined.");
@@ -281,36 +282,32 @@ export const Player = () => {
   const handlePreviewSong = () => {
     const { songs, song } = currentMusic;
 
-  if (!songs || !song) {
-    console.error("La propiedad songs o song es undefined.");
-    return;
-  }
-
-  // Calcula el índice de la siguiente canción
-  const currentSongIndex = songs.findIndex((s) => s.id === song.id);
-  const nextSongIndex = (currentSongIndex + 1) % songs.length;
-
-  // Obtiene la siguiente canción
-  const nextSong = songs[nextSongIndex];
-
-  // Reproduce la siguiente canción solo si el estado actual de audio lo permite
-  if (audioRef.current) {
-    try {
-      audioRef.current.pause();
-      usePlayerStore.getState().playSong(nextSong, songs);
-    } catch (error) {
-      console.error("Error al cambiar la canción:", error);
+    if (!songs || !song) {
+      console.error("La propiedad songs o song es undefined.");
+      return;
     }
-  }
+
+    // Calcula el índice de la siguiente canción
+    const currentSongIndex = songs.findIndex((s) => s.id === song.id);
+    const nextSongIndex = (currentSongIndex + 1) % songs.length;
+
+    // Obtiene la siguiente canción
+    const nextSong = songs[nextSongIndex];
+
+    // Reproduce la siguiente canción solo si el estado actual de audio lo permite
+    if (audioRef.current) {
+      try {
+        audioRef.current.pause();
+        usePlayerStore.getState().playSong(nextSong, songs);
+      } catch (error) {
+        console.error("Error al cambiar la canción:", error);
+      }
+    }
   };
   return (
     <section className="flex flex-col lg:flex-row justify-between items-center text-white font-bold text-xs py-4 lg:px-8 h-full">
       <div className="w-80 lg:flex lg:items-center lg:justify-center">
-      {loading ? (
-          <p>Cargando...</p>
-        ) : (
-          <CurrentSong {...currentMusic.song} />
-        )}
+        {loading ? <p>Cargando...</p> : <CurrentSong {...currentMusic.song} />}
       </div>
       <div className="grid place-content-center gap-4">
         <div className="flex justify-center flex-col items-center">
@@ -328,8 +325,39 @@ export const Player = () => {
                 <path d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z"></path>
               </svg>
             </button>
-            <button className="bg-white rounded-full p-2 hover:bg-green-500 transition-colors" onClick={handleClick}>
-              {isPlaying ? <Pause /> : <Play />}
+            <button
+              className={`bg-white rounded-full p-2 hover:bg-green-500 transition-colors ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              onClick={handleClick}
+              disabled={loading}
+            >
+              {loading ? (
+                <svg
+                  className="animate-spin h-5 w-5 text-gray-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 0116 0H4z"
+                  />
+                </svg>
+              ) : isPlaying ? (
+                <Pause />
+              ) : (
+                <Play />
+              )}
             </button>
 
             <button
@@ -347,7 +375,12 @@ export const Player = () => {
             </button>
           </div>
           <SongControl audio={audioRef} />
-          <audio preload="auto" ref={audioRef} onEnded={playNextSong} audio={audioRef} />
+          <audio
+            preload="auto"
+            ref={audioRef}
+            onEnded={playNextSong}
+            audio={audioRef}
+          />
         </div>
       </div>
       <div>

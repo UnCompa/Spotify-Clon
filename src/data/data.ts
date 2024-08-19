@@ -1,6 +1,21 @@
 import { colors } from "./colors";
-import { songs as Songs} from './songs.ts'
-import { songs as Songs2} from './songs2.ts'
+import {
+  song1,
+  song2,
+  song3,
+  song4,
+  song5,
+  song6,
+  song7,
+  song8,
+  song9,
+  song10,
+  song11,
+  song12,
+  song13,
+} from "./songs";
+
+// Usa Song1 - Song13 como antes
 
 export interface Playlist {
   id: string;
@@ -101,7 +116,8 @@ export const playlists: Playlist[] = [
     albumId: 11,
     title: "Para ti Samantha",
     color: colors.green,
-    cover: "https://www.lavoz.com.ar/resizer/usKssn9B43kU-4PdTs_km7-Qqdo=/980x640/smart/filters:quality(75):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/WGZ6GVIC2RFGZI4XP3MDZ46YI4.jpg",
+    cover:
+      "https://www.lavoz.com.ar/resizer/usKssn9B43kU-4PdTs_km7-Qqdo=/980x640/smart/filters:quality(75):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/WGZ6GVIC2RFGZI4XP3MDZ46YI4.jpg",
     artists: ["Hecho para ti - Samantha"],
   },
   {
@@ -109,7 +125,8 @@ export const playlists: Playlist[] = [
     albumId: 12,
     title: "Brandon Playlist 4",
     color: colors.blue,
-    cover: "https://i1.sndcdn.com/artworks-gxXwqOh40uEMqYCZ-lWg9Bg-t500x500.jpg",
+    cover:
+      "https://i1.sndcdn.com/artworks-gxXwqOh40uEMqYCZ-lWg9Bg-t500x500.jpg",
     artists: ["Hecho para ti - Brandon"],
   },
   {
@@ -117,7 +134,8 @@ export const playlists: Playlist[] = [
     albumId: 13,
     title: "Electronica",
     color: colors.blue,
-    cover: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/electronic-music-album-cover-template-design-12b51a1ad56ef5851bc8068dd8c79aaf_screen.jpg?ts=1599075720",
+    cover:
+      "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/electronic-music-album-cover-template-design-12b51a1ad56ef5851bc8068dd8c79aaf_screen.jpg?ts=1599075720",
     artists: ["Los mejores hits de electronica"],
   },
   {
@@ -125,7 +143,8 @@ export const playlists: Playlist[] = [
     albumId: 14,
     title: "Fiestera",
     color: colors.blue,
-    cover: "https://i.pinimg.com/564x/77/96/86/779686fe5e9ec6dbff0d24aec7238603.jpg",
+    cover:
+      "https://i.pinimg.com/564x/77/96/86/779686fe5e9ec6dbff0d24aec7238603.jpg",
     artists: ["Disfruta la fiesta con estas canciones"],
   },
   {
@@ -133,7 +152,8 @@ export const playlists: Playlist[] = [
     albumId: 15,
     title: "Emyli Playlist",
     color: colors.pink,
-    cover: "https://e1.pxfuel.com/desktop-wallpaper/412/93/desktop-wallpaper-fondos-de-pantalla-de-zelda-zelda-pc.jpg",
+    cover:
+      "https://e1.pxfuel.com/desktop-wallpaper/412/93/desktop-wallpaper-fondos-de-pantalla-de-zelda-zelda-pc.jpg",
     artists: ["Hecho para ti - Emily"],
   },
 ];
@@ -155,8 +175,19 @@ export const allPlaylists = [
 ];
 
 export const musics = [
-  ...Songs,
-  ...Songs2
-]
+  ...song1,
+  ...song2,
+  ...song3,
+  ...song4,
+  ...song5,
+  ...song6,
+  ...song7,
+  ...song8,
+  ...song9,
+  ...song10,
+  ...song11,
+  ...song12,
+  ...song13,
+];
 
-export const songs = musics
+export const songs = musics;

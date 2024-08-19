@@ -1,0 +1,13 @@
+export { songs as song1 } from "./song1.js";
+export { songs as song2 } from "./song2.js";
+export { songs as song3 } from "./song3.js";
+export { songs as song4 } from "./song4.js";
+export { songs as song5 } from "./song5.js";
+export { songs as song6 } from "./song6.js";
+export { songs as song7 } from "./song7.js";
+export { songs as song8 } from "./song8.js";
+export { songs as song9 } from "./song9.js";
+export { songs as song10 } from "./song10.js";
+export { songs as song11 } from "./song11.js";
+export { songs as song12 } from "./song12.js";
+export { songs as song13 } from "./song13.js";
