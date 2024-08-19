@@ -189,5 +189,14 @@ export const musics = [
   ...song12,
   ...song13,
 ];
+export const getPlaylistWithSongs = async (playlistId: number) => {
+  const playlist = playlists.find((p) => p.albumId === playlistId);
+  if (!playlist) {
+    throw new Error(`Playlist con ID ${playlistId} no encontrada.`);
+  }
+
+  const songs = await loadSongs(playlistId);
+  return { ...playlist, songs };
+};
 
 export const songs = musics;

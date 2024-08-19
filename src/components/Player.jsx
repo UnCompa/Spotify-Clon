@@ -241,7 +241,7 @@ export const Player = () => {
             audioRef.current.src = src;
             audioRef.current.volume = volume;
             audioRef.current.load();
-            audioRef.current.play()
+            audioRef.current.play();
           }
         } catch (e) {
           console.log(e);
